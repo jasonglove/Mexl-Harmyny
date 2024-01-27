@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 function findRecipe() {
     // Get the URL input value
     var urlInput = document.getElementById('url').value;
@@ -29,7 +28,6 @@ function findRecipe() {
         console.error('Error:', error);
     });
 }
-=======
 // quiz_script.js
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -65,4 +63,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
->>>>>>> Stashed changes
