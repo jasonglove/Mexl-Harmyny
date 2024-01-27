@@ -7,9 +7,14 @@
     <title>Flask Web App - RECIPE TAB</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, Flask!</h1>
-        <p>This is a simple Flask web app.</p>
+    <div class="url-input-container">
+        <label for="url-input">Paste URL:</label>
+        <input id="url" type="text" name="url-input" placeholder="Enter URL here">
+        <button id="submit-btn" onclick="findRecipe()">Submit</button>
+        <div id="outputContainer">
+            <!-- Recognition output will be displayed here -->
+        </div>
     </div>
 </body>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </html>
