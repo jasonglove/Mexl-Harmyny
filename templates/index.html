@@ -7,9 +7,17 @@
     <title>Flask Web App - QUIZ TAB</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, Flask!</h1>
-        <p>This is a simple Flask web app.</p>
-    </div>
+    <form method="post" action="{{ url_for('save_quiz_answers') }}">
+        <p>Question 1: How much fat to lose</p>
+        <select name="fat">
+            <option value="skinny">negative</option>
+            <option value="normal">none</option>
+            <option value="america">a bit</option>
+            <option value="fat">a lot</option>
+            <!-- Add more color options as needed -->
+        </select>
+        
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
