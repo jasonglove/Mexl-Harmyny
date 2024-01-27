@@ -22,3 +22,70 @@ p {
     color: #666;
 }
 
+<<<<<<< Updated upstream
+=======
+/* Style the button container */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  /* Hide the radio buttons */
+.button-container input[type="radio"] {
+    display: none;
+  }
+  
+  /* Style the labels (buttons) */
+  .button-container label {
+    padding: 10px 20px;
+    background-color: #e0e0e0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Style the labels when hovered */
+  .button-container label:hover {
+    background-color: #ddd;
+  }
+  
+  /* Style the labels when checked (selected) */
+  .button-container input[type="radio"]:checked + label {
+    background-color: #a0a0a0;
+  }
+
+  /* Style the slider */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  /* Style the slider thumb */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #230727;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #230727;
+    cursor: pointer;
+  }
+  
+>>>>>>> Stashed changes

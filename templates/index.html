@@ -8,16 +8,26 @@
 </head>
 <body>
     <form method="post" action="{{ url_for('save_quiz_answers') }}">
-        <p>Question 1: How much fat to lose</p>
-        <select name="fat">
-            <option value="skinny">negative</option>
-            <option value="normal">none</option>
-            <option value="america">a bit</option>
-            <option value="fat">a lot</option>
-            <!-- Add more color options as needed -->
-        </select>
+        <p>Dietary Restrictions</p>
+        <div>
+            <input type="checkbox" name="dietary" value="vegetarian" id="vegetarian">
+            <label for="vegetarian" style="padding: 10px 20px; background-color: #e0e0e0; border: 2px solid #ccc; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease">Vegetarian</label>
+            
+            <input type="checkbox" name="dietary" value="vegan" id="vegan">
+            <label for="vegan" style="padding: 10px 20px; background-color: #e0e0e0; border: 2px solid #ccc; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease">Vegan</label>
+            
+            <input type="checkbox" name="dietary" value="gluten" id="gluten">
+            <label for="gluten" style="padding: 10px 20px; background-color: #e0e0e0; border: 2px solid #ccc; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease">Gluten Free</label>
+        </div>
+
+        <p>Calorie Scale</p>
+        <div class="slider-container">
+            <input type="range" min="1" max="10" value="5" class="slider" id="calorie slider" name="calorie">
+        </div>
         
         <input type="submit" value="Submit">
     </form>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

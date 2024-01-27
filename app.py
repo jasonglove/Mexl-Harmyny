@@ -9,6 +9,7 @@ import re
 app = Flask(__name__)
 app.secret_key = 'secret'
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -18,12 +19,17 @@ def save_quiz_answers():
     #Logic to save quiz answers
     if request.method == 'POST':
         #Retrieve the quiz answers from the form data
-        fat = request.form.get('fat')
+        dietary = request.form.getlist('dietary')
+        calorie = request.form.get('calorie')
         #Add more answers as needed
         
         #Save the quiz answers in session variables
-        session['fat_amount'] = fat
-        
+        session['dietary'] = dietary
+        session['calorie'] = calorie
+
+        print("Session - Dietary:", session['dietary'])
+        print("Session - Calorie:", session['calorie'])
+
         #Redirect to the homepage after saving the answers
         return redirect(url_for('index'))
 
