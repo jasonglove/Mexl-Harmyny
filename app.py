@@ -20,14 +20,18 @@ def save_quiz_answers():
     if request.method == 'POST':
         #Retrieve the quiz answers from the form data
         dietary = request.form.getlist('dietary')
+        preferences = request.form.getlist('preferences')
         calorie = request.form.get('calorie')
+        
         #Add more answers as needed
         
         #Save the quiz answers in session variables
         session['dietary'] = dietary
         session['calorie'] = calorie
+        session['preferences'] = preferences
 
         print("Session - Dietary:", session['dietary'])
+        print("Session - preferences:", session['preferences'])
         print("Session - Calorie:", session['calorie'])
 
         #Redirect to the homepage after saving the answers
@@ -76,24 +80,6 @@ def ai_send():
         print(e.http_status)
         print(e.headers)
         
-
-
-@app.route('/save_quiz_answers', methods=['POST']) #Saves after quiz
-def save_quiz_answers():
-    #Logic to save quiz answers
-    if request.method == 'POST':
-        #Retrieve the quiz answers from the form data
-        fat = request.form.get('fat')
-        #Add more answers as needed
-        
-        #Save the quiz answers in session variables
-        session['fat_amount'] = fat
-        
-        #Redirect to the homepage after saving the answers
-        return redirect(url_for('index'))
-
-    return redirect(url_for('index'))  #Redirect after saving answers
-
 @app.route('/find-recipe', methods=['GET', 'POST'])
 def find_recipe():
 

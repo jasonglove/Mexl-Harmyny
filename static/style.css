@@ -8,7 +8,7 @@ body {
 .container {
     max-width: 800px;
     margin: 50px auto;
-    background-color: #fff;
+    background-color: #500000;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,36 +22,11 @@ p {
     color: #666;
 }
 
-/* Style the button container */
-.button-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  /* Hide the radio buttons */
-.button-container input[type="radio"] {
-    display: none;
-  }
-  
-  /* Style the labels (buttons) */
-  .button-container label {
-    padding: 10px 20px;
-    background-color: #e0e0e0;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Style the labels when hovered */
-  .button-container label:hover {
-    background-color: #ddd;
-  }
-  
-  /* Style the labels when checked (selected) */
-  .button-container input[type="radio"]:checked + label {
-    background-color: #a0a0a0;
-  }
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
 
   /* Style the slider */
 .slider {
@@ -65,6 +40,7 @@ p {
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
+    margin-left: -400px;
   }
   
   /* Style the slider thumb */
@@ -74,7 +50,7 @@ p {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #230727;
+    background: #606C38;
     cursor: pointer;
   }
   
@@ -85,4 +61,24 @@ p {
     background: #230727;
     cursor: pointer;
   }
+
+  .slider-container {
+    max-width: 400px; /* Set your desired maximum width */
+    margin: 0 auto;
+}
   
+  /* Style the labels (boxes) */
+label {
+    padding: 10px 20px;
+    background-color: #FEFAE0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style the labels when checked (selected) */
+input[type="checkbox"]:checked + label {
+    background-color: #DDA15E; /* Change to your desired highlight color */
+}
+
