@@ -94,11 +94,7 @@ def find_recipe():
         
         dietary_r = session.get('dietary')
         preferences_r = session.get('preferences')
-       
-       # if(len(dietary_r) == 0):
-       #     dietary_r[0]="No Dietary restrictions"
 
-        #print("Dietary ", dietary_r[0], " ", len(dietary_r))
 
 
             
