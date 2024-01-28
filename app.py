@@ -14,9 +14,6 @@ app.secret_key = 'secret'
 def index():
     return render_template('index.html')
 
-@app.route('/homepage')
-def homepage():
-    return render_template('homepage.html')
 
 @app.route('/save_quiz_answers', methods=['POST']) #Saves after quiz
 def save_quiz_answers():
@@ -89,34 +86,49 @@ def find_recipe():
         
 
         co = cohere.Client('8HpB7vvugn3gwd9Nh90fz2QyhPCYKElitOUgR7Rl')
-        #Change below to match with sam
         
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
+        dietary_r = session.get('dietary')
+        calorie_r = session.get('calorie')
+        preferences_r = session.get('preferences')
+       
+       # if(len(dietary_r) == 0):
+       #     dietary_r[0]="No Dietary restrictions"
+
+        #print("Dietary ", dietary_r[0], " ", len(dietary_r))
+        
         response2 = co.chat(
+
+
         chat_history=[
-                {"role": "USER", "message": "Adjust recipe to be (Vegetarian), and a relative calorie adjustment of (3) on a scale of 1-5, with 3 being no change.  Output the FIXED recipe as “Ingredients: $ #Ingredient 1 $#Ingredient 2 $#Ingredient 3” and the steps as “$Step 1 $Step text and information $Step 2 $Step text and information $Step 3 $Step text and information.” Output the new recipe EXACTLY as formatted. Output Nothing else."},
+                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed  {dietary_r}. This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences: {preferences_r}. The output should be every ingredient with measurements seperated from each other by a -. The next output should be all of the steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds chicken -Steps: -Step 1: cook rice -Step 2: Cook chicken -Step 3: Enjoy!. INCLUDE ALL STEPS THIS IS NECCESSARY AND WILL RUIN EVERYTHING IF NOT ALL ARE USED. REMEMBER TO USE -STEP formatting. INCLUDE NO OTHER WORDS."},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
-                ],
+        ],
   
         message = f"{directionsText}\n{ingredientsText}",
 
         connectors=[{"id": "web-search"}]
         )
 
-        print("THIS PART WORKS")
+        #THis is a string with the entire response
         newRecipe = response2.text
+
+        pattern = r'(-|\b\d{1,2}\.)'
+
+    # Substitute the matched pattern with the pattern followed by a new line
+        newRecipe = re.sub(pattern, r'<br>\1', newRecipe)
+
+        
         result = {'status' : 'success', 'newRecipe' : newRecipe}
 
     else:
         result = {'status': 'error', 'status-code': response.status_code}
 
     return jsonify(result)
-
+@app.route('/reset_session')
+def reset_session():
+    session.clear()  # Clear all variables stored in the session
+    return redirect(url_for('index'))  # Redirect to the homepage
 
 
 if __name__ == '__main__':
