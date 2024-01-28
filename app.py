@@ -88,7 +88,6 @@ def find_recipe():
         co = cohere.Client('8HpB7vvugn3gwd9Nh90fz2QyhPCYKElitOUgR7Rl')
         
         dietary_r = session.get('dietary')
-        calorie_r = session.get('calorie')
         preferences_r = session.get('preferences')
        
        # if(len(dietary_r) == 0):
@@ -96,27 +95,29 @@ def find_recipe():
 
         #print("Dietary ", dietary_r[0], " ", len(dietary_r))
 
-        veg = ' '
-        veg1 = ' '
 
-        if('vegetarian' in dietary_r):
-            veg = "MAKE THIS MEAL VEGETERIAN, IT CANNOT INCLUDE ANY MEAT AT ALL SUB ALL MEAT FOR MUSHROOMS.  "
-            veg1 = "THERE CAN BE NO DELI MEAT OR CHICKEN USE MUSHROOMS INSTEAD"
-        print(veg)
-        
+            
+        # if('vegetarian' in dietary_r):
+        #     chat_history=[
+        #         {"role": "USER", "message": "Make the following ingredients vegetarian. The output should be every  ingredient that follows my dietary restrictions with measurements seperated from each other by a -. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!. REMEMBER TO USE -STEP formatting. "},
+        #     ],
+        #     print("Veggie")
+        # else:
+
+
         response2 = co.chat(
-
-
-        chat_history=[
-                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed  {dietary_r}.{veg}This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences they are neccessary: {preferences_r}. The output should be every  ingredient that follows my dietary restrictions with measurements seperated from each other by a -. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!. {veg1} REMEMBER TO USE -STEP formatting. {veg} "},
+            chat_history=[
+                {"role": "USER", "message": "Here are my dietary requirements. These have to be followed  {dietary_r}. These are my preferences they are neccessary: {preferences_r}. {veg} The output should be every  ingredient that follows my dietary restrictions with measurements seperated from each other by a -. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!. REMEMBER TO USE -STEP formatting. "},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
-        ],
-  
-        message = f"{directionsText}\n{ingredientsText}",
+            ],
+        
 
-        connectors=[{"id": "web-search"}]
+            message = f"{directionsText}\n{ingredientsText}",
+
+            connectors=[{"id": "web-search"}]
         )
+
         #THis is a string with the entire response
         newRecipe = response2.text
 
