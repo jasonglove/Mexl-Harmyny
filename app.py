@@ -156,6 +156,12 @@ def reset_session():
     session.clear()  # Clear all variables stored in the session
     return redirect(url_for('index'))  # Redirect to the homepage
 
+@app.route('/get_session_data')
+def get_session_data():
+    dietary_r = session.get('dietary')
+    preferences_r = session.get('preferences')
+    return jsonify({'dietary': dietary_r, 'preferences' : preferences_r})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

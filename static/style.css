@@ -9,6 +9,7 @@
     --cardhover: #c6d0a4;
   }
   
+
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #hero-143 {
@@ -259,7 +260,7 @@
         list-style: none;
         width: 100%;
         /* 210px - 305px */
-        min-height: clamp(13.125rem, 30vw, 19.0625rem);
+        min-height: clamp(1rem, 20vw, 8rem);
         margin: 0;
         /* prevents padding and border from affecting height and width */
         box-sizing: border-box;
@@ -830,6 +831,29 @@
   #cs-navigation .cs-button-solid:hover:before {
     width: 100%;
   }
+  .submit-button {
+    background-color: #DDA15E;
+    color: #000000;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 1px 0 20px 0; /* Adjust top margin */
+}
+
+
+
+
+.submit-button:hover {
+    background-color: #edc5a2;
+}
+
+.orange-icon {
+    filter: invert(100%) sepia(100%) saturate(10000%) hue-rotate(30deg);
+}
+  
 }
                 
 
