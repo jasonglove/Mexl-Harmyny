@@ -36,9 +36,9 @@ def save_quiz_answers():
         print("Session - Calorie:", session['calorie'])
 
         #Redirect to the homepage after saving the answers
-        return redirect(url_for('index'))
+        return redirect(url_for('recipe'))
 
-    return redirect(url_for('index'))  #Redirect after saving answers
+    return redirect(url_for('recipe'))  #Redirect after saving answers
 
 @app.route('/recipe')
 def recipe():
@@ -83,32 +83,46 @@ def find_recipe():
             directionsText += f"Step {i}:\n{direction}\n"
             i+=1
 
-        
+        image_tag = soup.find('img', {'class': ['universal-image__image', 'img-placeholder']})
+        if image_tag:
+            image_url = image_tag['data-src']
+            print(image_url)
+        else:
+            print("NO IMAGE URL FOUND")
 
         co = cohere.Client('8HpB7vvugn3gwd9Nh90fz2QyhPCYKElitOUgR7Rl')
         
         dietary_r = session.get('dietary')
-        calorie_r = session.get('calorie')
         preferences_r = session.get('preferences')
-       
-       # if(len(dietary_r) == 0):
-       #     dietary_r[0]="No Dietary restrictions"
 
-        #print("Dietary ", dietary_r[0], " ", len(dietary_r))
+        Premessage = "The user will request an alternative recipe for a meal. You will be given the INGREDIENTS and the DIRECTIONS. ALL CHANGES MADE TO THE INGREDIENTS MUST BE REFLECTED IN THE DIRECTIONS.\n"
+
+        if('vegan' in dietary_r):
+            Premessage += "THIS USER IS VEGAN, IT CANNOT INCLUDE ANY ANIMAL PRODUCTS AT ALL. IF AN INGREDIENT IS MADE FROM ANY ANIMAL PRODUCTS, SUBSTITUTE IT FOR A VEGAN FRIENDLY OPTION.\n"
+        elif('vegetarian' in dietary_r):
+            Premessage += "THIS USER IS VEGETERIAN, IT CANNOT INCLUDE ANY MEAT.  IF AN INGREDIENT CONTAINS MEAT, SUBSTITUTE IT FOR A VEGETARIAN FRIENDLY OPTION.\n"
+
+        if('gluten free' in dietary_r):
+            Premessage += "THIS USER IS GLUTEN FREE. INGREDIENTS MUST ALL BE ALTERNATIVES THAT DO NOT INCLUDE GLUTEN WHERE APPLICABLE. IF AN IGREDIENT CONTAINS GLUTEN IT IS REQUIRED TO BE SUBSTITUTED FOR A GLUTEN FREE ALTERNATIVE.\n"
+        if('dairy free' in dietary_r):
+            Premessage += "THIS USER IS DAIRY FREE. INGREDIENTS MUST ALL BE ALTERNATIVES THAT DO NOT INCLUDE DAIRY WHERE APPLICABLE. IF AN IGREDIENT CONTAINS DAIRY IT IS REQUIRED TO BE SUBSTITUTED FOR A DAIRY FREE ALTERNATIVE.\n"
+
+        Premessage += "THE FORMAT OF YOUR RESPONSE MUST BE AS FOLLOWS:\nThe output should be every ingredient that follows any dietary restrictions with measurements seperated from each other by a -. IT IS IMPARITIVE THAT THE FORMAT IS CORRECT AND ALL USER DIETARY RESTRICIONS ARE FOLLOWED. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!.\n\nREMEMBER TO USE -STEP formatting.\n THINK ABOUT HOW THE INGREDIENTS NEED TO BE ADJUSTED FOR THE USER'S PREFERENCES AND MAKE ALL CHANGES. IT IS OF UTMOST IMPORTANCE THAT THE INGREDIENTS ARE TO THE USERS REQUEST AND THAT ALL FORMATTING IS AS STATED"
         
         response2 = co.chat(
 
 
         chat_history=[
-                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed IT IS ABSOLUTLY NECCESSARY {dietary_r}. This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences they are neccessary: {preferences_r}. The output should be every ingredient with measurements seperated from each other by a -. The next output should be all of the steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds chicken -Steps: -Step 1: cook rice -Step 2: Cook chicken -Step 3: Enjoy!. INCLUDE ALL STEPS THIS IS NECCESSARY AND WILL RUIN EVERYTHING IF NOT ALL ARE USED. REMEMBER TO USE -STEP formatting. INCLUDE NO OTHER WORDS."},
+                {"role": "USER", "message": Premessage},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
         ],
   
-        message = f"{directionsText}\n{ingredientsText}",
+        message = f"{ingredientsText}\n{directionsText}",
 
-        connectors=[{"id": "web-search"}]
+            connectors=[{"id": "web-search"}]
         )
+
         #THis is a string with the entire response
         newRecipe = response2.text
 
@@ -126,7 +140,7 @@ def find_recipe():
         newRecipe = re.sub(pattern, r'<br>\1', newRecipe)
 
         
-        result = {'status' : 'success', 'newRecipe' : newRecipe}
+        result = {'status' : 'success', 'newRecipe' : newRecipe, 'imageurl' : image_url}
 
     else:
         result = {'status': 'error', 'status-code': response.status_code}
