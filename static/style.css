@@ -40,7 +40,7 @@ p {
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-    margin-left: -400px;
+    /*margin-left: -400px;*/
   }
   
   /* Style the slider thumb */
@@ -82,3 +82,39 @@ input[type="checkbox"]:checked + label {
     background-color: #DDA15E; /* Change to your desired highlight color */
 }
 
+.checkbox-button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hidden-checkbox {
+    display: none;
+  }
+  
+  .checkbox-button .icon {
+    content: url('image-removebg-preview.png');
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  
+  .checkbox-button .button-text {
+    vertical-align: middle;
+  }
+  
+  .checkbox-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .hidden-checkbox:checked + .checkbox-button {
+    background-color: #b0b0b0;
+  }
+  
