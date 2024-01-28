@@ -17,7 +17,7 @@ function findRecipe() {
         if (data.status === 'success') {
             // Display ingredients and directions
             var outputContainer = document.getElementById('outputContainer');
-            outputContainer.innerHTML = "<h2>Ingredients:</h2>" + data.ingredients + "<h2>Directions:</h2>" + data.directions;
+            outputContainer.innerHTML = "<h2>New Recipe:</h2>" + data.newRecipe;
         } else {
             // Display error message
             var outputContainer = document.getElementById('outputContainer');
@@ -30,36 +30,36 @@ function findRecipe() {
 }
 // quiz_script.js
 
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector('form');
+// document.addEventListener("DOMContentLoaded", function() {
+//     const form = document.querySelector('form');
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
+//     form.addEventListener('submit', function(event) {
+//         event.preventDefault(); // Prevent the default form submission
 
-        // Collect form data
-        const formData = new FormData(form);
+//         // Collect form data
+//         const formData = new FormData(form);
 
-        // Send form data to the server using AJAX
-        fetch('/save_quiz_answers', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error in saving quiz answers');
-            }
+//         // Send form data to the server using AJAX
+//         fetch('/save_quiz_answers', {
+//             method: 'POST',
+//             body: formData
+//         })
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Error in saving quiz answers');
+//             }
             
-        })
-        .then(() => {
-            // Handle successful response (if needed)
-            console.log('Quiz answers saved successfully');
-            // You can redirect or perform any other action here
+//         })
+//         .then(() => {
+//             // Handle successful response (if needed)
+//             console.log('Quiz answers saved successfully');
+//             // You can redirect or perform any other action here
             
-        })
-        .catch(error => {
-            // Handle errors
-            console.error('Error:', error);
-            // You can show an error message or perform any other action here
-        });
-    });
-});
+//         })
+//         .catch(error => {
+//             // Handle errors
+//             console.error('Error:', error);
+//             // You can show an error message or perform any other action here
+//         });
+//     });
+// });
