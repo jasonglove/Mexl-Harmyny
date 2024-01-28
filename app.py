@@ -83,7 +83,12 @@ def find_recipe():
             directionsText += f"Step {i}:\n{direction}\n"
             i+=1
 
-        
+        image_tag = soup.find('img', {'class': ['universal-image__image', 'img-placeholder']})
+        if image_tag:
+            image_url = image_tag['data-src']
+            print(image_url)
+        else:
+            print("NO IMAGE URL FOUND")
 
         co = cohere.Client('8HpB7vvugn3gwd9Nh90fz2QyhPCYKElitOUgR7Rl')
         
@@ -135,7 +140,7 @@ def find_recipe():
         newRecipe = re.sub(pattern, r'<br>\1', newRecipe)
 
         
-        result = {'status' : 'success', 'newRecipe' : newRecipe}
+        result = {'status' : 'success', 'newRecipe' : newRecipe, 'imageurl' : image_url}
 
     else:
         result = {'status': 'error', 'status-code': response.status_code}
