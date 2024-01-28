@@ -14,6 +14,10 @@ app.secret_key = 'secret'
 def index():
     return render_template('index.html')
 
+@app.route('/homepage')
+def homepage():
+    return render_template('homepage.html')
+
 @app.route('/save_quiz_answers', methods=['POST']) #Saves after quiz
 def save_quiz_answers():
     #Logic to save quiz answers

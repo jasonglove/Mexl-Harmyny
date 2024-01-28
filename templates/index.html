@@ -10,32 +10,36 @@
     <form method="post" action="{{ url_for('save_quiz_answers') }}">
         <p>Dietary Restrictions</p>
         <div>
-
-            <input class="cs-button-4" type="checkbox" name="dietary" value="vegetarian" id="vegetarian">
-            <label for="vegetarian" >Vegetarian</label>
+            <input type="checkbox" name="dietary" value="vegetarian" id="vegetarian" class="hidden-checkbox">
+            <label for="vegetarian" class="checkbox-button">
+              <span class="icon"></span>
+              <span class="button-text">Vegetarian</span>
+            </label>
+            
+            
             
             <input class="cs-button-4" type="checkbox" name="dietary" value="vegan" id="vegan">
             <label for="vegan" >Vegan</label>
             
-            <input class="cs-button-4" type="checkbox" name="dietary" value="gluten" id="gluten">
+            <input type="checkbox" name="dietary" value="gluten free" id="gluten">
             <label for="gluten" >Gluten Free</label>
            
-            <input class="cs-button-4" type="checkbox" name="dietary" value="dairy" id="dairy">
+            <input type="checkbox" name="dietary" value="dairy free" id="dairy">
             <label for="dairy" >Dairy Free</label>
         </div>
 
         <p>Dietary Preferences</p>
         <div>
-            <input type="checkbox" name="preferences" value="protein" id="protein">
+            <input type="checkbox" name="preferences" value="high protein" id="protein">
             <label for="protein" >High Protein</label>
             
-            <input type="checkbox" name="preferences" value="sodium" id="sodium">
+            <input type="checkbox" name="preferences" value="low sodium" id="sodium">
             <label for="sodium" >Low Sodium</label>
             
-            <input type="checkbox" name="preferences" value="fat" id="fat">
+            <input type="checkbox" name="preferences" value="low fat" id="fat">
             <label for="fat" >Low Fat</label>
             
-            <input type="checkbox" name="preferences" value="sugar" id="sugar">
+            <input type="checkbox" name="preferences" value="low sugar" id="sugar">
             <label for="sugar" >Low Sugar</label>
             
         </div>
