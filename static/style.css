@@ -4,9 +4,9 @@
 
 :root {
     --bgBefore: #606C38 ; /* Define a color variable */
-    --bgSelect: #c6d0a4;
-    --bgHover: #c6d0a4;
-    --cardhover: #c6d0a4;
+    --bgSelect: #a9b876;
+    --bgHover: #a9b876;
+    --cardhover: #a9b876;
   }
   
 
@@ -260,7 +260,7 @@
         list-style: none;
         width: 100%;
         /* 210px - 305px */
-        min-height: clamp(1rem, 20vw, 8rem);
+        min-height: clamp(1rem, 20vw, 10rem);
         margin: 0;
         /* prevents padding and border from affecting height and width */
         box-sizing: border-box;
@@ -1099,7 +1099,7 @@
 }
 
 #submit-btn {
-  background-color: #4CAF50;
+  background-color: #a9b876;
   color: white;
   border: none;
   border-radius: 5px;
