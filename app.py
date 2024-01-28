@@ -120,8 +120,6 @@ def find_recipe():
   
         message = f"{ingredientsText}\n{directionsText}",
 
-            message = f"{directionsText}\n{ingredientsText}",
-
             connectors=[{"id": "web-search"}]
         )
 
