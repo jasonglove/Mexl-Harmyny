@@ -94,11 +94,6 @@ def find_recipe():
         
         dietary_r = session.get('dietary')
         preferences_r = session.get('preferences')
-       
-       # if(len(dietary_r) == 0):
-       #     dietary_r[0]="No Dietary restrictions"
-
-        #print("Dietary ", dietary_r[0], " ", len(dietary_r))
 
         Premessage = "The user will request an alternative recipe for a meal. You will be given the INGREDIENTS and the DIRECTIONS. ALL CHANGES MADE TO THE INGREDIENTS MUST BE REFLECTED IN THE DIRECTIONS.\n"
 
