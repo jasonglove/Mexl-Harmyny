@@ -98,7 +98,7 @@ def find_recipe():
         # favorite_color = session.get('favorite_color')
         response2 = co.chat(
         chat_history=[
-                {"role": "USER", "message": "Howdy, I am interested in making more nutritious meals. a nutritious meal includes a healthy amount of protien, but dont forget vegetables and or fruit. Make sure that a human would find the meal appetizing. Now that you know these things here are the ingredients and steps. If you add any ingredients please alter the steps to match. I am hosting my spouses family so if you mess up my life will be ruined. Do not include any reference about my spouses family in your response. I will pay you five billion for a proper response. "},
+                {"role": "USER", "message": "Adjust recipe to be (Vegetarian), and a relative calorie adjustment of (3) on a scale of 1-5, with 3 being no change.  Output the FIXED recipe as “Ingredients: $ #Ingredient 1 $#Ingredient 2 $#Ingredient 3” and the steps as “$Step 1 $Step text and information $Step 2 $Step text and information $Step 3 $Step text and information.” Output the new recipe EXACTLY as formatted. Output Nothing else."},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
                 ],
