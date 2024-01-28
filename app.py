@@ -14,9 +14,6 @@ app.secret_key = 'secret'
 def index():
     return render_template('index.html')
 
-@app.route('/homepage')
-def homepage():
-    return render_template('homepage.html')
 
 @app.route('/save_quiz_answers', methods=['POST']) #Saves after quiz
 def save_quiz_answers():
@@ -103,7 +100,7 @@ def find_recipe():
 
 
         chat_history=[
-                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed  {dietary_r}. This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences: {preferences_r}. The output should be every ingredient with measurements seperated from each other by a -. The next output should be all of the steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds chicken -Steps: -Step 1: cook rice -Step 2: Cook chicken -Step 3: Enjoy!. INCLUDE ALL STEPS. REMEMBER TO USE -STEP formatting. INCLUDE NO OTHER WORDS."},
+                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed  {dietary_r}. This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences: {preferences_r}. The output should be every ingredient with measurements seperated from each other by a -. The next output should be all of the steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds chicken -Steps: -Step 1: cook rice -Step 2: Cook chicken -Step 3: Enjoy!. INCLUDE ALL STEPS THIS IS NECCESSARY AND WILL RUIN EVERYTHING IF NOT ALL ARE USED. REMEMBER TO USE -STEP formatting. INCLUDE NO OTHER WORDS."},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
         ],
@@ -115,6 +112,13 @@ def find_recipe():
 
         #THis is a string with the entire response
         newRecipe = response2.text
+
+        pattern = r'(-|\b\d{1,2}\.)'
+
+    # Substitute the matched pattern with the pattern followed by a new line
+        newRecipe = re.sub(pattern, r'<br>\1', newRecipe)
+
+        
         result = {'status' : 'success', 'newRecipe' : newRecipe}
 
     else:
