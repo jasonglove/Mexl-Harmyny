@@ -107,7 +107,16 @@ def find_recipe():
         if('dairy free' in dietary_r):
             Premessage += "THIS USER IS DAIRY FREE. INGREDIENTS MUST ALL BE ALTERNATIVES THAT DO NOT INCLUDE DAIRY WHERE APPLICABLE. IF AN IGREDIENT CONTAINS DAIRY IT IS REQUIRED TO BE SUBSTITUTED FOR A DAIRY FREE ALTERNATIVE.\n"
 
-        Premessage += "THE FORMAT OF YOUR RESPONSE MUST BE AS FOLLOWS:\nThe output should be Ingredients: followed by every ingredient that follows any dietary restrictions with measurements seperated from each other by a -. IT IS ABSOLUTLY IMPARITIVE THAT THE FORMAT IS CORRECT AND ALL USER DIETARY RESTRICIONS ARE FOLLOWED. The next output should be Steps: followed by all of the valid steps are listed seperated from each other by -. An example of this is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!.\n\nREMEMBER TO USE -STEP formatting.\n THINK ABOUT HOW THE INGREDIENTS NEED TO BE ADJUSTED FOR THE USER'S PREFERENCES AND MAKE ALL CHANGES. IT IS OF UTMOST IMPORTANCE THAT THE INGREDIENTS ARE TO THE USERS REQUEST AND THAT ALL FORMATTING IS AS EXACTLY AS STATED WITH ALL STEPS LISTED"
+        if('high protein' in preferences_r):
+            Premessage += "THIS USER WANTS THE RECIPE TO HAVE MORE PROTEIN. SUBSTITUTE ITEMS WHERE POSSIBLE TO HAVE INCREASED PROTEIN\n"
+        if('low sodium' in preferences_r):
+            Premessage += "THIS USER WANTS THE RECIPE TO HAVE LESS SODIUM. SUBSTITUTE ITEMS WHERE POSSIBLE TO HAVE LESS SODIUM\n"
+        if('low fat' in preferences_r):
+            Premessage += "THIS USER WANTS THE RECIPE TO HAVE LESS FAT. SUBSTITUTE ITEMS WHERE POSSIBLE TO HAVE LESS FAT\n"
+        if('low sugar' in preferences_r):
+            Premessage += "THIS USER WANTS THE RECIPE TO HAVE LESS SUGAR. SUBSTITUTE ITEMS WHERE POSSIBLE TO HAVE LESS SUGAR\n"
+
+        Premessage += "THE FORMAT OF YOUR RESPONSE MUST BE AS FOLLOWS:\nThe output should be Ingredients: followed by every ingredient that follows any dietary restrictions with measurements seperated from each other by a -. IT IS ABSOLUTLY IMPARITIVE THAT THE FORMAT IS CORRECT AND ALL USER DIETARY RESTRICIONS ARE FOLLOWED. The next output should be Steps: followed by all of the valid steps are listed seperated from each other by -. An example of this is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!.\n\nREMEMBER TO USE -STEP formatting.\n THINK ABOUT HOW THE INGREDIENTS NEED TO BE ADJUSTED FOR THE USER'S PREFERENCES AND MAKE ALL CHANGES. IT IS OF UTMOST IMPORTANCE THAT THE INGREDIENTS ARE TO THE USERS REQUEST AND THAT ALL FORMATTING IS AS EXACTLY AS STATED WITH ALL STEPS LISTED.\nTHE OUTPUT MUST HAVE THE SAME NUMBER OF STEPS AS THE ORIGINAL"
         
         response2 = co.chat(
 
