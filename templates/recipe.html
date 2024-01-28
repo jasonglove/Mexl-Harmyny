@@ -19,15 +19,9 @@
             <img src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Flogo-black.svg" alt="logo" width="210" height="29" aria-hidden="true" decoding="async">
         </a>
         <div class="url-input-container">
-            <input id="url" type="text" name="url-input" placeholder="Enter a Recipe URL Here" style="width: 400px; height: 40px; border-radius: 10px; border: none; padding: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); text-align: center; margin-right: 10px;">
-            <button id="submit-btn" onclick="findRecipe()">Submit</button>
+            <input id="url" type="text" name="url-input" placeholder="Enter a Recipe URL Here" style="font-size: large; width: 400px; height: 40px; border-radius: 10px; border: none; padding: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); text-align: center; margin-right: 10px;">
+            <button style="font-size: large;" id="submit-btn" onclick="findRecipe()">Submit</button>
         </div>
-        
-        
-        <div id="outputContainer">
-            <!-- Recognition output will be displayed here -->
-        </div>
-        
         
         <!--Navigation List-->
         <nav class="cs-nav" role="navigation">
@@ -43,19 +37,13 @@
             <div class="cs-ul-wrapper">
                 <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
                     <li class="cs-li">
-                        <a href="" class="cs-li-link cs-active">
+                        <a style="font-size: larger;" href="" class="cs-li-link cs-active">
                             Home / About
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <a href="" class="cs-button-solid cs-nav-button">Contact Us</a>
-        <!--Dark Mode toggle, uncomment button code if you want to enable a dark mode toggle-->
-        <!-- <button id="dark-mode-toggle" aria-label="dark mode toggle">
-            <svg class="cs-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480" xml:space="preserve"><path d="M459.782 347.328c-4.288-5.28-11.488-7.232-17.824-4.96-17.76 6.368-37.024 9.632-57.312 9.632-97.056 0-176-78.976-176-176 0-58.4 28.832-112.768 77.12-145.472 5.472-3.712 8.096-10.4 6.624-16.832S285.638 2.4 279.078 1.44C271.59.352 264.134 0 256.646 0c-132.352 0-240 107.648-240 240s107.648 240 240 240c84 0 160.416-42.688 204.352-114.176 3.552-5.792 3.04-13.184-1.216-18.496z"/></svg>
-            <img class="cs-sun" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fsun.svg" decoding="async" alt="moon" width="15" height="15">
-        </button> -->
     </div>
 </header>
     
@@ -76,37 +64,16 @@
     <section id="content-page-714">
         <div class="cs-container">
             <div class="cs-content">
-                <h1 class="cs-title">h1 - A Personalized Approach To Your <span class="cs-color">Well-Being</span></h1>
-                <h2>Heading 2</h2>
-                <h3>Heading 3</h3>
-                <h4>Heading 4-6</h4>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis laboriosam eum quae in temporibus cumque tempora expedita mollitia nostrum adipisci, ipsum commodi, cupiditate, sequi quos enim! Quaerat esse non sunt! Lorem ipsum dolor sit amet <a href="">link example</a>. Est, quis!
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis laboriosam eum quae in temporibus cumque tempora expedita mollitia nostrum <strong>adipisci, ipsum commodi</strong>, cupiditate, sequi quos enim! 
-                </p>
-                <h3>Heading 3</h3>
-                <ol>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ol>
-                <h4>Heading 4-6</h4>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ul>
+                <div id="outputContainer">
+                    <!-- Recognition output will be displayed here -->
+                </div>
             </div>
             <div class="cs-image-group">
                 <picture class="cs-picture">
-                    <!--Mobile Image-->
-                    <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Fperson7.jpg">
-                    <!--Tablet and above Image-->
-                    <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Fperson7.jpg">
-                    <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Fperson7.jpg" alt="person" width="570" height="680" aria-hidden="true">
+                    <img id="foodImage" loading="lazy" decoding="async" src="" alt="person" aria-hidden="true" style="width: 100%; height: auto;">
                 </picture>
+                
+                
 
                 <!--Flower Graphic-->
                 <img class="cs-flower" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FGraphics%2Fbig-abstract-flower.svg" alt="flower graphic" width="362" height="350" aria-hidden="true">

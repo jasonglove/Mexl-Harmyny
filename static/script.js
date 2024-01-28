@@ -18,7 +18,10 @@ function findRecipe() {
             // Display ingredients and directions
             var outputContainer = document.getElementById('outputContainer');
             var hiddenElements = document.getElementById('hiddenElements');
+            var foodImage = document.getElementById("foodImage")
             outputContainer.innerHTML = "<h1>New Recipe:</h1>" + data.newRecipe;
+            console.log(data.imageurl)
+            foodImage.src = data.imageurl;
             hiddenElements.style.display = 'block';
         } else {
             // Display error message

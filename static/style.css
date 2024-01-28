@@ -1078,10 +1078,11 @@
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 15px 20px; /* Adjust the padding to increase the height */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 
 #submit-btn:hover {
   background-color: #45a049;
