@@ -100,7 +100,7 @@ def find_recipe():
 
 
         chat_history=[
-                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed  {dietary_r}. This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences: {preferences_r}. The output should be every ingredient with measurements seperated from each other by a -. The next output should be all of the steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds chicken -Steps: -Step 1: cook rice -Step 2: Cook chicken -Step 3: Enjoy!. INCLUDE ALL STEPS THIS IS NECCESSARY AND WILL RUIN EVERYTHING IF NOT ALL ARE USED. REMEMBER TO USE -STEP formatting. INCLUDE NO OTHER WORDS."},
+                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed IT IS ABSOLUTLY NECCESSARY {dietary_r}. This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences they are neccessary: {preferences_r}. The output should be every ingredient with measurements seperated from each other by a -. The next output should be all of the steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds chicken -Steps: -Step 1: cook rice -Step 2: Cook chicken -Step 3: Enjoy!. INCLUDE ALL STEPS THIS IS NECCESSARY AND WILL RUIN EVERYTHING IF NOT ALL ARE USED. REMEMBER TO USE -STEP formatting. INCLUDE NO OTHER WORDS."},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
         ],
