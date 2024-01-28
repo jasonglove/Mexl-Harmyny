@@ -93,7 +93,6 @@ def find_recipe():
         co = cohere.Client('8HpB7vvugn3gwd9Nh90fz2QyhPCYKElitOUgR7Rl')
         
         dietary_r = session.get('dietary')
-        calorie_r = session.get('calorie')
         preferences_r = session.get('preferences')
        
        # if(len(dietary_r) == 0):
@@ -126,8 +125,11 @@ def find_recipe():
   
         message = f"{ingredientsText}\n{directionsText}",
 
-        connectors=[{"id": "web-search"}]
+            message = f"{directionsText}\n{ingredientsText}",
+
+            connectors=[{"id": "web-search"}]
         )
+
         #THis is a string with the entire response
         newRecipe = response2.text
 
