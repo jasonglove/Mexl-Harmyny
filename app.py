@@ -109,7 +109,6 @@ def find_recipe():
 
         connectors=[{"id": "web-search"}]
         )
-
         #THis is a string with the entire response
         newRecipe = response2.text
 

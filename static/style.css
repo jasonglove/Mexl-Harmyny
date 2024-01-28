@@ -218,12 +218,14 @@
     }
     #services-1377 .cs-card-group {
         width: 100%;
+        height: auto;
         margin: 0;
         padding: 0;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         /* 16px - 20px */
         gap: clamp(1rem, 2.3vw, 1.25rem);
+        grid-template-rows: repeat(auto-fit, minmax(calc(50% - 0.5rem), auto)); 
     }
     .cs-checkbox {
         display: none; /* Hide the default checkbox */
