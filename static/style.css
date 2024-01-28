@@ -1409,3 +1409,10 @@ body {
   border-radius: 20px; /* Adjust the border-radius for squircle effect */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding shadow */
 }
+
+.footer {
+  height: 180px; /* Height of the footer */
+  background-color: #f7f7f7; /* Footer background color */
+  width: 100%; /* Extend the footer across the screen */
+  position: relative; /* Ensure proper positioning */
+  bottom: 0; /* Position at the bottom */
