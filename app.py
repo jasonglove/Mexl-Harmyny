@@ -102,12 +102,7 @@ def find_recipe():
 
 
             
-        # if('vegetarian' in dietary_r):
-        #     chat_history=[
-        #         {"role": "USER", "message": "Make the following ingredients vegetarian. The output should be every  ingredient that follows my dietary restrictions with measurements seperated from each other by a -. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!. REMEMBER TO USE -STEP formatting. "},
-        #     ],
-        #     print("Veggie")
-        # else:
+       
 
 
         response2 = co.chat(
