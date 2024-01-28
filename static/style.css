@@ -279,7 +279,7 @@
         position: relative;
         z-index: 1;
         transition: background-color 0.3s;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     }
     /* ################################################33IMPORTANT########################*/
 
@@ -842,6 +842,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin: 1px 0 20px 0; /* Adjust top margin */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
 }
 
 
