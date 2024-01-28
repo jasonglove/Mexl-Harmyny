@@ -1,4 +1,10 @@
 function findRecipe() {
+
+    var loadingIcon = document.getElementById('loadIcon');
+    var hiddenElements = document.getElementById('hiddenElements');
+    hiddenElements.style.display = 'none';
+    loadingIcon.style.display = 'block';
+
     // Get the URL input value
     var urlInput = document.getElementById('url').value;
 
@@ -17,12 +23,12 @@ function findRecipe() {
         if (data.status === 'success') {
             // Display ingredients and directions
             var outputContainer = document.getElementById('outputContainer');
-            var hiddenElements = document.getElementById('hiddenElements');
             var foodImage = document.getElementById("foodImage")
-            outputContainer.innerHTML = "<h1>New Recipe:</h1>" + data.newRecipe;
+            outputContainer.innerHTML = data.newRecipe;
             console.log(data.imageurl)
             foodImage.src = data.imageurl;
             hiddenElements.style.display = 'block';
+            loadingIcon.style.display = 'none';
         } else {
             // Display error message
             var outputContainer = document.getElementById('outputContainer');
