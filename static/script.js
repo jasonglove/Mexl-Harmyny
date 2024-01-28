@@ -17,7 +17,9 @@ function findRecipe() {
         if (data.status === 'success') {
             // Display ingredients and directions
             var outputContainer = document.getElementById('outputContainer');
-            outputContainer.innerHTML = "<h2>New Recipe:</h2>" + data.newRecipe;
+            var hiddenElements = document.getElementById('hiddenElements');
+            outputContainer.innerHTML = "<h1>New Recipe:</h1>" + data.newRecipe;
+            hiddenElements.style.display = 'block';
         } else {
             // Display error message
             var outputContainer = document.getElementById('outputContainer');

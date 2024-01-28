@@ -132,6 +132,7 @@ def find_recipe():
         result = {'status': 'error', 'status-code': response.status_code}
 
     return jsonify(result)
+
 @app.route('/reset_session')
 def reset_session():
     session.clear()  # Clear all variables stored in the session
