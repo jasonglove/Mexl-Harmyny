@@ -113,6 +113,14 @@ def find_recipe():
         #THis is a string with the entire response
         newRecipe = response2.text
 
+        pattern_I = r'(Ingredients:)'
+
+        newRecipe = re.sub(pattern_I, r'<h2>\1</h2>', newRecipe)
+
+        pattern_S = r'(Steps:)'
+
+        newRecipe = re.sub(pattern_S, r'<br><h2>\1</h2>', newRecipe)
+
         pattern = r'(-|\b\d{1,2}\.)'
 
     # Substitute the matched pattern with the pattern followed by a new line
