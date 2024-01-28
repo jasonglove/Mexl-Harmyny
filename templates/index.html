@@ -197,6 +197,45 @@
                        
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script>
+    // Fetch session data from the server
+    fetch('/get_session_data')
+        .then(response => response.json())
+        .then(data => {
+            // Check if the vegetarian checkbox was checked previously
+            const isVegetarianChecked = (data.dietary).includes('vegetarian');
+            const isVeganChecked = (data.dietary).includes('vegan');
+            const isGlutenChecked = (data.dietary).includes('gluten free');
+            const isDairyChecked = (data.dietary).includes('dairy free');
+
+            const isProteinChecked = (data.preferences).includes('high protein');
+            const isSodiumChecked = (data.preferences).includes('low sodium');
+            const isFatChecked = (data.preferences).includes('low fat');
+            const isSugarCheked = (data.preferences).includes('low sugar');
+
+            const vegetarianCheckbox = document.getElementById('vegetarian');
+            const veganCheckbox = document.getElementById('vegan');
+            const glutenCheckbox = document.getElementById('gluten');
+            const dairyCheckbox = document.getElementById('dairy');
+
+            const proteinCheckbox = document.getElementById('protein');
+            const sodiumCheckbox = document.getElementById('sodium');
+            const fatCheckbox = document.getElementById('fat');
+            const sugarCheckbox = document.getElementById('sugar');
+
+            // Set the checked attribute based on the session variable
+            vegetarianCheckbox.checked = isVegetarianChecked;
+            veganCheckbox.checked = isVeganChecked;
+            glutenCheckbox.checked = isGlutenChecked;
+            dairyCheckbox.checked = isDairyChecked;
+
+            proteinCheckbox.checked = isProteinChecked;
+            sodiumCheckbox.checked = isSodiumChecked;
+            fatCheckbox.checked = isFatChecked;
+            sugarCheckbox.checked = isSugarCheked;
+        })
+        .catch(error => console.error('Error fetching session data:', error));
+</script>
 
 </body>
 </html>
