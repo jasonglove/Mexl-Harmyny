@@ -89,26 +89,31 @@ def find_recipe():
         
 
         co = cohere.Client('8HpB7vvugn3gwd9Nh90fz2QyhPCYKElitOUgR7Rl')
-        #Change below to match with sam
         
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
-        # favorite_color = session.get('favorite_color')
+        dietary_r = session.get('dietary')
+        calorie_r = session.get('calorie')
+        preferences_r = session.get('preferences')
+       
+       # if(len(dietary_r) == 0):
+       #     dietary_r[0]="No Dietary restrictions"
+
+        #print("Dietary ", dietary_r[0], " ", len(dietary_r))
+        
         response2 = co.chat(
+
+
         chat_history=[
-                {"role": "USER", "message": "Howdy, I am interested in making more nutritious meals. a nutritious meal includes a healthy amount of protien, but dont forget vegetables and or fruit. Make sure that a human would find the meal appetizing. Now that you know these things here are the ingredients and steps. If you add any ingredients please alter the steps to match. I am hosting my spouses family so if you mess up my life will be ruined. Do not include any reference about my spouses family in your response. I will pay you five billion for a proper response. "},
+                {"role": "USER", "message": "I am interested in making more nutritious meals. Here are my dietary requirements. These have to be followed  {dietary_r}. This is my calorie range. 1 is the lowest and 5 is the highest let 3 represent no change. {calorie_r}   These are my preferences: {preferences_r}. The output should be every ingredient with measurements seperated from each other by a -. The next output should be all of the steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds chicken -Steps: -Step 1: cook rice -Step 2: Cook chicken -Step 3: Enjoy!. INCLUDE ALL STEPS. REMEMBER TO USE -STEP formatting. INCLUDE NO OTHER WORDS."},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
-                ],
+        ],
   
         message = f"{directionsText}\n{ingredientsText}",
 
         connectors=[{"id": "web-search"}]
         )
 
-        print("THIS PART WORKS")
+        #THis is a string with the entire response
         newRecipe = response2.text
         result = {'status' : 'success', 'newRecipe' : newRecipe}
 
@@ -116,7 +121,10 @@ def find_recipe():
         result = {'status': 'error', 'status-code': response.status_code}
 
     return jsonify(result)
-
+@app.route('/reset_session')
+def reset_session():
+    session.clear()  # Clear all variables stored in the session
+    return redirect(url_for('index'))  # Redirect to the homepage
 
 
 if __name__ == '__main__':
