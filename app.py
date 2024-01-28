@@ -95,20 +95,30 @@ def find_recipe():
         dietary_r = session.get('dietary')
         preferences_r = session.get('preferences')
 
+        Premessage = "The user will request an alternative recipe for a meal. You will be given the INGREDIENTS and the DIRECTIONS. ALL CHANGES MADE TO THE INGREDIENTS MUST BE REFLECTED IN THE DIRECTIONS.\n"
 
+        if('vegan' in dietary_r):
+            Premessage += "THIS USER IS VEGAN, IT CANNOT INCLUDE ANY ANIMAL PRODUCTS AT ALL. IF AN INGREDIENT IS MADE FROM ANY ANIMAL PRODUCTS, SUBSTITUTE IT FOR A VEGAN FRIENDLY OPTION.\n"
+        elif('vegetarian' in dietary_r):
+            Premessage += "THIS USER IS VEGETERIAN, IT CANNOT INCLUDE ANY MEAT.  IF AN INGREDIENT CONTAINS MEAT, SUBSTITUTE IT FOR A VEGETARIAN FRIENDLY OPTION.\n"
 
-       
+        if('gluten free' in dietary_r):
+            Premessage += "THIS USER IS GLUTEN FREE. INGREDIENTS MUST ALL BE ALTERNATIVES THAT DO NOT INCLUDE GLUTEN WHERE APPLICABLE. IF AN IGREDIENT CONTAINS GLUTEN IT IS REQUIRED TO BE SUBSTITUTED FOR A GLUTEN FREE ALTERNATIVE.\n"
+        if('dairy free' in dietary_r):
+            Premessage += "THIS USER IS DAIRY FREE. INGREDIENTS MUST ALL BE ALTERNATIVES THAT DO NOT INCLUDE DAIRY WHERE APPLICABLE. IF AN IGREDIENT CONTAINS DAIRY IT IS REQUIRED TO BE SUBSTITUTED FOR A DAIRY FREE ALTERNATIVE.\n"
 
-
+        Premessage += "THE FORMAT OF YOUR RESPONSE MUST BE AS FOLLOWS:\nThe output should be every ingredient that follows any dietary restrictions with measurements seperated from each other by a -. IT IS IMPARITIVE THAT THE FORMAT IS CORRECT AND ALL USER DIETARY RESTRICIONS ARE FOLLOWED. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!.\n\nREMEMBER TO USE -STEP formatting.\n THINK ABOUT HOW THE INGREDIENTS NEED TO BE ADJUSTED FOR THE USER'S PREFERENCES AND MAKE ALL CHANGES. IT IS OF UTMOST IMPORTANCE THAT THE INGREDIENTS ARE TO THE USERS REQUEST AND THAT ALL FORMATTING IS AS STATED"
+        
         response2 = co.chat(
-            chat_history=[
-                {"role": "USER", "message": "Here are my dietary requirements. These have to be followed  {dietary_r}. These are my preferences they are neccessary: {preferences_r}. {veg} The output should be every  ingredient that follows my dietary restrictions with measurements seperated from each other by a -. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!. REMEMBER TO USE -STEP formatting. "},
+
+
+        chat_history=[
+                {"role": "USER", "message": Premessage},
     
     # delete{"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
-            ],
-        
-
-            message = f"{directionsText}\n{ingredientsText}",
+        ],
+  
+        message = f"{ingredientsText}\n{directionsText}",
 
             connectors=[{"id": "web-search"}]
         )
