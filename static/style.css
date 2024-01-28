@@ -2,6 +2,13 @@
 <---           Hero             -->
 <--- -------------------------- -*/
 
+:root {
+    --bgBefore: #283618 ; /* Define a color variable */
+    --bgSelect: #c6d0a4;
+    --bgHover: #c6d0a4;
+    --cardhover: #c6d0a4;
+  }
+  
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #hero-143 {
@@ -156,7 +163,7 @@
       transition: width 0.3s;
   }
   #hero-143 .cs-button-solid:hover {
-      color: #fff;
+      color: var(--bgHover);
   }
   #hero-143 .cs-button-solid:hover:before {
       width: 100%;
@@ -218,6 +225,33 @@
         /* 16px - 20px */
         gap: clamp(1rem, 2.3vw, 1.25rem);
     }
+    .cs-checkbox {
+        display: none; /* Hide the default checkbox */
+    }
+
+    .cs-label {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Align horizontally in the middle */
+        cursor: pointer;
+        padding: 10px;
+        /*border: 1px solid #680303; /*BORDER* /*/
+        transition: background-color 0.3s;
+        margin-top: auto; /* Push the label to the bottom of the card */
+        border-radius: 10px; /* Curve corners */
+    }
+    
+    .cs-label:hover {
+        background-color: var(--bgHover); /* Change background color on hover */
+    }
+
+    .cs-checkbox:checked + .cs-label {
+        background-color:  var(--bgSelect); /* Change the background color when selected */
+    }
+
+    .cs-icon {
+        margin-right: 10px; /* Add spacing between the icon and text */
+    }
     #services-1377 .cs-item {
         list-style: none;
         width: 100%;
@@ -230,7 +264,7 @@
         padding: clamp(1rem, 1.8vw, 1.5rem);
         /* 24px - 32px */
         padding-top: clamp(1.5rem, 2.3vw, 2rem);
-        background-color: #fff;
+        background-color: var(--bgBefore); /* MAIN CARD                                          */
         border-radius: 1.5rem;
         display: flex;
         flex-direction: column;
@@ -242,19 +276,27 @@
         z-index: 1;
         transition: background-color 0.3s;
     }
+    /* ################################################33IMPORTANT########################*/
+
+
     #services-1377 .cs-item:hover {
-        background-color: var(--primary);
+        background-color: var(--cardhover); /*CHANGES ON HOVER BIG CARD*/
     }
-    #services-1377 .cs-item:hover .cs-icon,
-    #services-1377 .cs-item:hover .cs-arrow {
+    
+    #services-1377 .cs-checkbox:checked + .cs-item {
+        background-color: #DDA15E; /* Change the background color when checkbox is checked */
+    }
+
+    /* #services-1377 .cs-item:hover .cs-icon,
+    /* #services-1377 .cs-item:hover .cs-arrow {
         filter: grayscale(1) brightness(1000%);
-    }
-    #services-1377 .cs-item:hover .cs-h3 {
+    } */
+    /* #services-1377 .cs-item:hover .cs-h3 {
         color: #fff;
-    }
-    #services-1377 .cs-item:hover .cs-arrow-wrapper {
+    } */
+    /* #services-1377 .cs-item:hover .cs-arrow-wrapper {
         border-color: #fff;
-    }
+    } */
     #services-1377 .cs-icon {
         width: auto;
         height: 2.5rem;
