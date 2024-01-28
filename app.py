@@ -107,7 +107,7 @@ def find_recipe():
         if('dairy free' in dietary_r):
             Premessage += "THIS USER IS DAIRY FREE. INGREDIENTS MUST ALL BE ALTERNATIVES THAT DO NOT INCLUDE DAIRY WHERE APPLICABLE. IF AN IGREDIENT CONTAINS DAIRY IT IS REQUIRED TO BE SUBSTITUTED FOR A DAIRY FREE ALTERNATIVE.\n"
 
-        Premessage += "THE FORMAT OF YOUR RESPONSE MUST BE AS FOLLOWS:\nThe output should be every ingredient that follows any dietary restrictions with measurements seperated from each other by a -. IT IS IMPARITIVE THAT THE FORMAT IS CORRECT AND ALL USER DIETARY RESTRICIONS ARE FOLLOWED. The next output should be all of the valid steps are listed seperated from each other by -. An example is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!.\n\nREMEMBER TO USE -STEP formatting.\n THINK ABOUT HOW THE INGREDIENTS NEED TO BE ADJUSTED FOR THE USER'S PREFERENCES AND MAKE ALL CHANGES. IT IS OF UTMOST IMPORTANCE THAT THE INGREDIENTS ARE TO THE USERS REQUEST AND THAT ALL FORMATTING IS AS STATED"
+        Premessage += "THE FORMAT OF YOUR RESPONSE MUST BE AS FOLLOWS:\nThe output should be Ingredients: followed by every ingredient that follows any dietary restrictions with measurements seperated from each other by a -. IT IS ABSOLUTLY IMPARITIVE THAT THE FORMAT IS CORRECT AND ALL USER DIETARY RESTRICIONS ARE FOLLOWED. The next output should be Steps: followed by all of the valid steps are listed seperated from each other by -. An example of this is: Ingredients: -1 cup rice -2 pounds tomato -Steps: -Step 1: cook rice -Step 2: Cook tomato -Step 3: Enjoy!.\n\nREMEMBER TO USE -STEP formatting.\n THINK ABOUT HOW THE INGREDIENTS NEED TO BE ADJUSTED FOR THE USER'S PREFERENCES AND MAKE ALL CHANGES. IT IS OF UTMOST IMPORTANCE THAT THE INGREDIENTS ARE TO THE USERS REQUEST AND THAT ALL FORMATTING IS AS EXACTLY AS STATED WITH ALL STEPS LISTED"
         
         response2 = co.chat(
 
@@ -132,6 +132,10 @@ def find_recipe():
 
         pattern_S = r'(Steps:)'
 
+        #pattern_SS = r'(Step )'
+
+        #newRecipe=re.sub(pattern_SS, r'(<br>\1)', newRecipe)
+
         newRecipe = re.sub(pattern_S, r'<br><h2>\1</h2>', newRecipe)
 
         pattern = r'(-|\b\d{1,2}\.)'
@@ -151,6 +155,12 @@ def find_recipe():
 def reset_session():
     session.clear()  # Clear all variables stored in the session
     return redirect(url_for('index'))  # Redirect to the homepage
+
+@app.route('/get_session_data')
+def get_session_data():
+    dietary_r = session.get('dietary')
+    preferences_r = session.get('preferences')
+    return jsonify({'dietary': dietary_r, 'preferences' : preferences_r})
 
 
 if __name__ == '__main__':
